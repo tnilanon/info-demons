@@ -1,0 +1,251 @@
+ 
+%%
+%% This is file `elsarticle-template-num.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% elsarticle.dtx  (with options: `numtemplate')
+%% 
+%% Copyright 2007, 2008 Elsevier Ltd.
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% -------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+
+%\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+\documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+\pdfoutput=1
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%\usepackage{hyperref} %generate bookmarks for better navigation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% author packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{times}
+\usepackage{epsfig}
+\usepackage[ruled]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{subfigure}
+\usepackage{xspace}
+\usepackage{rotating}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsmath}  
+\usepackage{amssymb}
+\DeclareFontFamily{OT1}{pzc}{}
+\DeclareFontShape{OT1}{pzc}{m}{it}%
+              {<-> s * [0.900] pzcmi7t}{}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}%
+                                 {m}{it}
+                                 
+\urldef{\mailsa}\path|{lwei, eribeiro}@fit.edu|
+%\usepackage{bm}
+%\usepackage{eucal}
+%
+%\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Authors' definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\argmax}{\operatornamewithlimits{arg\,\,max}}
+\newcommand{\argmin}{\operatornamewithlimits{arg\,\,min}}
+
+\renewcommand{\baselinestretch}{2.0}
+
+\newcommand{\etal}{{et al.}}
+\newcommand{\ie}{{i.e., }}          
+\newcommand{\eg}{{e.g., }}          
+
+
+\def\xprime{x^\prime}
+\def\yprime{y^\prime}
+\def\Transpose{{^\mathsf{T}}}
+
+
+% using package soul instead of ulem
+\usepackage{soul}
+\newcommand{\remove}[1]{{\bf \textcolor{red}{\st{#1}}}}
+\newcommand{\add}[1]{{\bf \textcolor{blue}{{\sf #1}}}}
+\newcommand{\ask}[1]{{\textcolor{cyan}{{\sf #1}}}\marginpar{$\leftarrow$ \sf question}}
+\newcommand{\suggestion}[1]{{\sf #1}\marginpar{$\leftarrow$ \sf suggestion}}
+\newcommand{\comment}[1]{{\bf \textcolor{red}{{\sf #1}}}}
+% margin note
+\newcommand{\mn}[1]{\marginpar{{\small \sf #1}}}
+%%%
+\newcommand{\Visual}{\mathcal{V}}                     % bold \mathcal{I} letter
+
+\newcommand{\thefrench}{G\^{a}teaux }
+\newcommand{\MovingGroup}{M}
+\newcommand{\FixedGroup}{F}
+\newcommand{\NBin}{B}										%number of bins in the histogram
+\newcommand{\Prob}{P}										%probability function
+\newcommand{\Entropy}{H}
+\newcommand{\JSD}{\text{JS}}						%Jesen-Shannon divergence
+\newcommand{\bfx}{\mathbf{x}}						%3-D coordinate vector
+\newcommand{\SimFunc}{\text{Sim}}
+\newcommand{\Ecorr}{E^{\text{corr}}}		%Correspondence energy
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\journal{Computer Vision and Image Understanding}
+
+\begin{document}
+
+
+\include{notationsymbols}
+
+\begin{frontmatter}
+
+
+
+\title{Intergroup Registration with Jensen-Shannon Demons}
+
+% {Paper Number 513}
+\author{Wei Liu}
+\address{
+}
+
+\begin{abstract}
+doodle
+\end{abstract}
+
+\begin{keyword}
+
+
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers
+
+%% main text
+%------------------------------------------------------------------------- 
+\section{Introduction}
+
+
+
+\section{Jesen-Shannon Demons}
+
+Given a group of images $I=\left\{I_s(\bfx) |\,\, s=1\ldots N, \bfx\in \mathbb{R}^3\right\}$, we use a group-wise registration algorithm~\cite{Wu20111968} to align the images. Then, we estimate a histogram field $\FixedGroup(\bfx)$ from the aligned images, where each ``voxel'' of $\FixedGroup(\bfx)$ is a probability density function (PDF). In this paper, we simply represent the PDFs using histograms, \ie each ``voxel'' $\FixedGroup(\bfx) = \left\{ p_1(\bfx), p_2(\bfx), \cdots, p_\NBin(\bfx) \right\}^\Transpose$ is a vector, where $\NBin \in \mathbb{N}$ is the number of bins in the histogram and $\sum_{i=1}^\NBin p_i(\bfx)=1$ for all $\bfx$. After estimating a histogram field for each group, we formulate the inter-group registration propblem as to align the corresponding histogram fields, inconstrast to existing approaches (citations) that simply register the group mean images.
+
+We use $\FixedGroup$ and $\MovingGroup$ to represent the ``fixed'' and ``moving'' histogram fields, and the goal is to find the spatial transformation $s$ such that a similarity criterion $\SimFunc(\FixedGroup,\MovingGroup\circ s)$ is minimized~\cite{Vercauteren2009S61}. There are many choices for $\SimFunc$. For instance, mean-squared error (MSE) is used as similarity criterion for intensity-based registration. In~\cite{peyrat_multichannel_demons}, MSE is used for multi-channel Demons registration. In principle, we can treat histogram fields as ordinary multi-channel images, and use the approach in~\cite{peyrat_multichannel_demons} to align them. However, MSE can be sensitive to outliers. Instead, we resort to Jesen-Shannon divergence~\cite{wang_vemuri_js_divergence}, which is a distance measure tailored to probability density functions and is robust to outliers.
+
+Given two probability distributions $\Prob_1,\Prob_2$, the Jesen-Shannon divegence is defined as follows~\cite{wang_vemuri_js_divergence}:
+\begin{align}
+	\JSD(\Prob_1,\Prob_2) &= \Entropy\left(\frac{1}{2}\Prob_1+\frac{1}{2}\Prob_2\right)-\frac{1}{2}\Entropy(\Prob_1)-\frac{1}{2}\Entropy(\Prob_2),
+	\label{eq:js_divergence}
+\end{align}
+where $\Entropy$ is the well-known Shannon entropy. For discrete random variable $\mathbf{X}$ with $n$ events ${x_1,\ldots, x_n}$, Shannon entropy is defined as:
+\begin{align}
+\Entropy\mathbf{X})=-\sum_{i=1}^n p(x_i) \log_b p(x_i).
+\label{eq:shannon}
+\end{align}
+Given the definition of Jesen-Shannon divergence in (\ref{eq:js_divergence}), we define a similarity criterion following the formality of MSE-based criterion~\cite{Vercauteren2009S61}, given by:
+\begin{align}
+\SimFunc(\FixedGroup,\MovingGroup\circ s)=\frac{1}{|\Omega|} \sum_{p \in \Omega} \JSD\left(\FixedGroup(p),\MovingGroup(s(p))\right).
+\label{eq:js_similarity}
+\end{align}
+Here, $\Omega$ is the region of overlap between $\FixedGroup$ and $\MovingGroup\circ s$.
+Again, in a similar fasion to previous Demons methods~\cite{Vercauteren2009S61,peyrat_multichannel_demons}, we can formulate the linearization of the multi-channel Demons correspondence energy as (~\ref{apx:linearization}):
+\begin{align}
+	\Ecorr = \frac{1}{|\Omega|} \sum_{p \in \Omega}
+	\label{eq:linearization}
+\end{align}
+
+\appendix
+
+\section{Implementation notes}
+
+\subsection{Shannon Entropy of Histograms}
+
+Probability $p(x_i)$ is estimated using a histogram as:
+\begin{align}
+p(x_i)\approx\frac{h_i}{C}, \hspace{.5in} \text{with} \hspace{.5in} C=\sum_{i=1}^{n} h_i
+\label{eq:histogram}
+\end{align}
+with $h_i$ as count of events $x_i$ and $C$ is the total number of trials. Substituting (\ref{eq:histogram}) into (\ref{eq:shannon}), we have:
+\begin{align}
+	H(\mathbf{X})&\approx - \sum_{i=1}^n \frac{h_i}{C} \log_b \frac{h_i}{C} \notag\\
+	&=-\frac{1}{C} \sum_{i=1}^n \left( h_i \log_b h_i - h_i \log_b C \right) \notag \\
+	&=-\frac{1}{C} \sum_{i=1}^n h_i \log_b h_i + \frac{1}{C}\sum_{i=1}^n h_i \log_b C \notag \\
+	&= -\frac{1}{C} \sum_{i=1}^n h_i \log_b h_i + \log_b C .
+\end{align}
+
+
+\section{Linearization of J-S divergence}
+\label{apx:linearization}
+In this section, we explain the details of converting our similarity criterion based on Jensen-Shannon divergence (Equation~\ref{eq:js_similarity}) into the linearized correspondence energy (Equation~\ref{eq:linearization}).
+Here, we largely follow the derivation and formality in~\cite{Vercauteren2009S61}.
+
+{\small 
+\bibliographystyle{unsrt}
+\bibliography{wei_intergroup}
+}
+
+
+
+\end{document}
+
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.
+
+
+
+
+
+
+
+
+
