@@ -482,8 +482,8 @@ LabelESMDemonsRegistrationFunction<TFixedImage,TMovingImage,TDeformationField>
 	// if we could, this would be an often unnecessary time-consuming task.
 	if ( globalData )
 	{
-		double scalarSD=vnl_math_sqr( scalarSpeedValue );
-		double scalarSDDelta=update.GetSquaredNorm();
+//		double scalarSD=vnl_math_sqr( scalarSpeedValue );
+//		double scalarSDDelta=update.GetSquaredNorm();
 		//globalData->m_SumOfSquaredDifference += vnl_math_sqr( speedValue );
 		//globalData->m_NumberOfPixelsProcessed += 1;
 		//globalData->m_SumOfSquaredChange += update.GetSquaredNorm();
@@ -568,8 +568,7 @@ LabelESMDemonsRegistrationFunction<TFixedImage,TMovingImage,TDeformationField>
 	//alpha[1]=0.4;
     //alpha[2] = 0.25;
     //alpha[3] = 0.25;
-    std::cout<<"Number of Channels: "<<nChannels<<std::endl;
-
+//    std::cout<<"Number of Channels: "<<nChannels<<std::endl;
 
 	for(int c=0;c<nChannels;c++)
 		for(int i=0;i<ImageDimension;i++)

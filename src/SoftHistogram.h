@@ -54,7 +54,7 @@ namespace itk
 		{
 			//create a monster multi-channel image representing the histogram field
 			HistogramPointer pHis=new HistogramFieldType();
-			for(size_t i=0;i<para.nBins;i++)
+			for(int i=0;i<para.nBins;i++)
 			{
 				ImagePointer pbin=ImageType::New();
 				pHis->PendAChannel(pbin);
@@ -104,7 +104,7 @@ namespace itk
 				typename ImageType::RegionType region(FirstIndex,img_ptr->GetLargestPossibleRegion().GetSize());
 				if(!i)
 				{
-					for(size_t j=0;j<para.nBins;j++)
+					for(int j=0;j<para.nBins;j++)
 					{
 						ImagePointer pbin=pHis->GetNthChannel(j);
 						pbin->SetRegions(region);
