@@ -41,8 +41,8 @@
 
 struct arguments
 {
-	std::string  fixedGroupBaseName;  /* -o option */
-	std::string  fixedGroupList;			/* -i option */
+	std::string  outputHistogramBaseName;  /* -o option */
+	std::string  inputImageList;			/* -i option */
 	float wSigma;									/* -w option */ //Window size for soft-histogram
 	int nBins;										/* -b					*/ //number of bins in the histogram
 	//min and max of the value
@@ -55,8 +55,8 @@ struct arguments
 
 		return o
 			<<"Arguments structure:"<<std::endl
-			<<"  Output base name for the computed histogram field: "<<args.fixedGroupBaseName<<std::endl
-			<<"  Input list of images: "<<args.fixedGroupList<<std::endl
+			<<"  Output base name for the computed histogram field: "<<args.outputHistogramBaseName<<std::endl
+			<<"  Input list of images: "<<args.inputImageList<<std::endl
 			<<"  Width of the Gaussian window function: "<<args.wSigma<<std::endl
 			<<"	 Number of bins in the histogram: "<<args.nBins<<std::endl
 			<<"	 Range of the histogram value: "<<args.rMin<<" to "<<args.rMax<<std::endl;
@@ -150,12 +150,12 @@ void parseOpts (int argc, char **argv, struct arguments & args)
 
 	// Define parsing options
 	command.SetOption("OutputHistogramBase","o",true,"Base name of the output histogram");
-	command.SetOptionLongTag("OutputHistogramBase","histogram-basename");
+	command.SetOptionLongTag("OutputHistogramBase","output-histogram-basename");
 	command.AddOptionField("OutputHistogramBase","filename",MetaCommand::STRING,true);
 
 	// Define parsing options for building histograms
 	command.SetOption("InputImageList","i",true,"Filename containing list of input images for building fixed histogram field");
-	command.SetOptionLongTag("InputImageList","input-list");
+	command.SetOptionLongTag("InputImageList","input-image-list");
 	command.AddOptionField("InputImageList","filename",MetaCommand::STRING,true);
 
 	command.SetOption("HistogramWindowWidth","w",false,"Variance of the Gaussian window functon");
@@ -187,8 +187,8 @@ void parseOpts (int argc, char **argv, struct arguments & args)
 
 
 	// Store the parsed information into a struct
-	args.fixedGroupBaseName = command.GetValueAsString("OutputHistogramBase","filename");
-	args.fixedGroupList = command.GetValueAsString("InputImageList","filename");
+	args.outputHistogramBaseName = command.GetValueAsString("OutputHistogramBase","filename");
+	args.inputImageList = command.GetValueAsString("InputImageList","filename");
 	args.wSigma =command.GetValueAsFloat("HistogramWindowWidth","floatval");
 	args.rMin =command.GetValueAsFloat("RangeMinimum","floatval");
 	args.rMax =command.GetValueAsFloat("RangeMaximum","floatval");
@@ -213,17 +213,7 @@ void BuildHistograms( arguments args )
 	typedef itk::MultiChannelImage<ImageType>			HistogramFieldType;
 
 	// Images we use
-	typename ImageType::Pointer fixedImage = 0;
-	typename ImageType::Pointer movingImage = 0;
-	typename LabelImageType::Pointer LabelImage =0;
-	typename DeformationFieldType::Pointer inputDefField = 0;
-	typename HistogramFieldType::Pointer fixedHistogramField;
-//	typename HistogramFieldType::Pointer movingHistogramField;
-
-	typedef float										GradPixelType;
-	typedef  itk::Image<GradPixelType,Dimension>		MoveGradImageType;
-	typename MoveGradImageType::Pointer					movingGradImage=0;
-	// typename FixedGradImageType::Pointer fixedGradImage=0;
+	typename HistogramFieldType::Pointer histogramField;
 
 	itk::HistogramPara hpara;
 	hpara.wSigma =args.wSigma;
@@ -231,8 +221,8 @@ void BuildHistograms( arguments args )
 	hpara.rMax=args.rMax;
 	hpara.rMin=args.rMin;
 	hpara.verbose=true;
-	fixedHistogramField= itk::HistogramBuilder<ImageType>::BuildHistogramFromFileList(args.fixedGroupList,hpara);
-	fixedHistogramField->WriteToFiles(args.fixedGroupBaseName);
+	histogramField= itk::HistogramBuilder<ImageType>::BuildHistogramFromFileList(args.inputImageList,hpara);
+	histogramField->WriteToFiles(args.outputHistogramBaseName);
 }
 
 
@@ -260,7 +250,7 @@ int main( int argc, char *argv[] )
 		BuildHistograms<3>(args);
 		break;
 	default:
-		std::cout << "Unsuported dimension" << std::endl;
+		std::cout << "Unsupported dimension" << std::endl;
 		exit( EXIT_FAILURE );
 	}
 

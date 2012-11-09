@@ -83,19 +83,19 @@ void parseOpts (int argc, char **argv, struct arguments & args)
 	command.SetDescription("Basic image registration tool with the diffeomorphic demons algorithm.");
 
 	// Define parsing options
-	command.SetOption("OutputHistogramBase","f",true,"Base name of the output histogram");
-	command.SetOptionLongTag("OutputHistogramBase","fixed-image");
+	command.SetOption("OutputHistogramBase","o",true,"Base name of the output histogram");
+	command.SetOptionLongTag("OutputHistogramBase","output-histogram-basename");
 	command.AddOptionField("OutputHistogramBase","filename",MetaCommand::STRING,true);
 
 
 	// Define parsing options for building histograms
-	command.SetOption("HistogramList","F",true,"Filename containing list of histogram channels");
-	command.SetOptionLongTag("HistogramList","fixed-histogram");
+	command.SetOption("HistogramList","i",true,"Filename containing list of histogram channels");
+	command.SetOptionLongTag("HistogramList","input-histogram-list");
 	command.AddOptionField("HistogramList","filename",MetaCommand::STRING,true);
 
 	// Define parsing options for building histograms
-	command.SetOption("Dimension","-d",true,"Dimensions of input images");
-	command.SetOptionLongTag("Dimension","fixed-histogram");
+	command.SetOption("Dimension","d",false,"Dimensions of input images");
+	command.SetOptionLongTag("Dimension","dimension");
 	command.AddOptionField("Dimension","intval",MetaCommand::INT,true,"3");
 
 
