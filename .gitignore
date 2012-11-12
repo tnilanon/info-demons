@@ -1,3 +1,11 @@
-.DS_Store
 .svn
+build
+*.aux
+*.bbl
+*.blg
+*.log
+*.pdf
+*.spl
+*.synctex.gz
+
 
