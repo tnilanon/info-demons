@@ -144,17 +144,18 @@ namespace itk
 					//now add it to the histogram.
 					PixelType lower_bound=value-cutoff;
 					PixelType upper_bound=value+cutoff;
-					int lower_idx=(int)ceil((lower_bound-half_delta)/delta_r);
-					int upper_idx=(int)floor((upper_bound-half_delta)/delta_r);
+					int lower_idx=(int)floor((lower_bound-para.rMin)/delta_r);
+					int upper_idx=(int)floor((upper_bound-para.rMin)/delta_r);
 					if(lower_idx<0)
 						lower_idx=0;
 					assert(lower_idx<para.nBins);
 					if(upper_idx>para.nBins-1)
 						upper_idx=para.nBins-1;
 					assert(upper_idx>=0);
+                    assert(lower_idx<=upper_idx);
 
 					//scanned the bins within the cutoff range
-					PixelType dstart=half_delta+lower_idx*delta_r-value;
+					PixelType dstart=para.rMin+half_delta+lower_idx*delta_r-value;
 
 					//distance between center of the starting bin to current value.
 					for(int hidx=lower_idx;hidx<=upper_idx;hidx++)
