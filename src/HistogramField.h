@@ -269,7 +269,7 @@ public:
 		std::string appendix;
 		for(size_t i=0;i<_channels.size();i++)
 		{
-			sprintf(temp,"%04zd.mha",i);
+			sprintf(temp,"%04zd.hdr",i);
 			appendix=temp;
 			std::string fn=base_fn+appendix;
 			WriterPointerType wr=WriterType::New();
